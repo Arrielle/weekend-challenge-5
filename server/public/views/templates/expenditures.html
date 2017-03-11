@@ -1,0 +1,42 @@
+<h1>Monthly Expenditures View</h1>
+<p> {{ec.message}} </p>
+<div id = "addEmployee">
+  <form>
+    <input ng-model="ec.newEmployee.first_name" placeholder="First Name">
+    <input ng-model="ec.newEmployee.last_name" placeholder = "Last Name">
+    <input ng-model="ec.newEmployee.id_number" placeholder="ID Number">
+    <input ng-model="ec.newEmployee.job_title" placeholder="Job Title">
+    <input ng-model="ec.newEmployee.annual_salary" placeholder="Annual Salary">
+    <button ng-click="ec.addEmployee()">Add Employee</button>
+  </form>
+</div>
+
+<div id = "activeExpenditures">
+  <h2>Employee Expenditures</h2>
+<table align = "center">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>ID Number</th>
+    <th>Job Title</th>
+    <th>Annual Salary</th>
+    <th>Active/Inactive</th>
+  </tr>
+  <tr ng-repeat="employee in ec.expendituresList.list" ng-show="employee.active" ng-class="{active: employee.active}">
+    <td>{{employee.first_name}}</td>
+    <td>{{employee.last_name}}</td>
+    <td>{{employee.id_number}}</td>
+    <td>{{employee.job_title}}</td>
+    <td>{{employee.annual_salary}}</td>
+    <td><button type="button" name="button">Set Inactive</button></td>
+  </tr>
+  <tr ng-repeat="employee in ec.expendituresList.list" ng-hide="employee.active" ng-class="{inactive: !employee.active}">
+    <td>{{employee.first_name}}</td>
+    <td>{{employee.last_name}}</td>
+    <td>{{employee.id_number}}</td>
+    <td>{{employee.job_title}}</td>
+    <td>{{employee.annual_salary}}</td>
+    <td><button type="button" name="button">Set Active</button></td>
+  </tr>
+</table>
+</div>
