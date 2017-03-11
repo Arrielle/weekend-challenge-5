@@ -12,7 +12,6 @@ self.addEmployee = function(){
   console.log(self.newEmployee);
 }
 
-
 self.calculateExpenditure = function(){
   var totalSalary = 0;
   for (var i = 0; i < self.activeEmployeeList.list.length; i++) {
@@ -22,5 +21,12 @@ self.calculateExpenditure = function(){
   return self.monthlyExpenditure
 }
 
+self.statusChangeInactive = function(employeeID){
+  DataFactory.changeStatusInactive(employeeID);
+}
+
+self.statusChangeActive = function(employeeID){
+  DataFactory.changeStatusActive(employeeID);
+}
 
 }]);

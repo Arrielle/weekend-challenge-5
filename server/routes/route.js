@@ -67,6 +67,50 @@ router.post('/newEmployee', function(req,res){
     });//ends client query
   }//ends else
   });//end pool.connect
-})
+});//ends newEmployee post
+
+router.put('/inactive/:id', function(req, res){
+  var employeeStatusToChangeID = req.params.id;
+  console.log(req.params.id);
+  pool.connect(function(err, client, done){
+    if(err){
+      console.log('error connecting to database')
+      res.sendStatus(500);
+    } else {
+      client.query('UPDATE employee_information SET active = FALSE WHERE ID = $1;',
+      [employeeStatusToChangeID], function(err, result){
+        done();
+        if (err){
+          console.log('error updating the database');
+          res.sendStatus(500);
+        } else {
+          res.status(200);
+        }
+      });
+    }
+  });
+});
+
+router.put('/active/:id', function(req, res){
+  var employeeStatusToChangeID = req.params.id;
+  console.log(req.params.id);
+  pool.connect(function(err, client, done){
+    if(err){
+      console.log('error connecting to database')
+      res.sendStatus(500);
+    } else {
+      client.query('UPDATE employee_information SET active = true WHERE ID = $1;',
+      [employeeStatusToChangeID], function(err, result){
+        done();
+        if (err){
+          console.log('error updating the database');
+          res.sendStatus(500);
+        } else {
+          res.status(200);
+        }
+      });
+    }
+  });
+});
 
 module.exports = router;

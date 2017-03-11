@@ -33,13 +33,36 @@ myApp.factory('DataFactory', ['$http', function($http) {
       data: newEmployee
     }).then(function(response){
        getExpenditures();
+       getActive();
     });
+  }
+
+  function changeStatusInactive(employeeID){
+    $http({
+      method: 'PUT',
+      url: '/inactive/' + employeeID
+    }).then(function(response){
+      getActive();
+      getExpenditures();
+    })
+  }
+
+  function changeStatusActive(employeeID){
+    $http({
+      method: 'PUT',
+      url: '/active/' + employeeID
+    }).then(function(response){
+      getActive();
+      getExpenditures();
+    })
   }
 
   return {
     factoryExpenditures: factoryExpenditures,
     addEmployee: addEmployee,
-    activeEmployees: activeEmployees
+    activeEmployees: activeEmployees,
+    changeStatusInactive: changeStatusInactive,
+    changeStatusActive: changeStatusActive
   }
 
 }]);

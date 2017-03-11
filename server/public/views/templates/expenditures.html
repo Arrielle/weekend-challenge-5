@@ -28,7 +28,7 @@
       <td>{{employee.id_number}}</td>
       <td>{{employee.job_title}}</td>
       <td>{{employee.annual_salary}}</td>
-      <td><button type="button" name="button">Set Inactive</button></td>
+      <td><button ng-click="ec.statusChangeInactive(employee.id)" type="button" name="button">Set Inactive</button></td>
     </tr>
     <tr ng-repeat="employee in ec.expendituresList.list" ng-hide="employee.active" ng-class="{inactive: !employee.active}">
       <td>{{employee.first_name}}</td>
@@ -36,7 +36,7 @@
       <td>{{employee.id_number}}</td>
       <td>{{employee.job_title}}</td>
       <td>{{employee.annual_salary}}</td>
-      <td><button type="button" name="button">Set Active</button></td>
+      <td><button ng-click="ec.statusChangeActive(employee.id)" type="button" name="button">Set Active</button></td>
     </tr>
   </table>
   <div id = monthlyExpenditure>
