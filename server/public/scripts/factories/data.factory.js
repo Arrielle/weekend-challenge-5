@@ -2,7 +2,9 @@ myApp.factory('DataFactory', ['$http', function($http) {
   var self = this;
   self.newEmployee = {};
   var factoryExpenditures = { list: [] };
+  var activeEmployees = { list: [] };
   getExpenditures();
+  getActive();
 
   console.log('in factory', factoryExpenditures);
 
@@ -12,6 +14,15 @@ myApp.factory('DataFactory', ['$http', function($http) {
       url: '/expenditures'
     }).then(function(response){
       factoryExpenditures.list = response.data;
+    });
+  }
+
+  function getActive(){
+    $http({
+      method: 'GET',
+      url: '/activeEmployees'
+    }).then(function(response){
+      activeEmployees.list = response.data;
     });
   }
 
@@ -27,7 +38,8 @@ myApp.factory('DataFactory', ['$http', function($http) {
 
   return {
     factoryExpenditures: factoryExpenditures,
-    addEmployee: addEmployee
+    addEmployee: addEmployee,
+    activeEmployees: activeEmployees
   }
 
 }]);

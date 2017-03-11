@@ -17,7 +17,26 @@ router.get('/expenditures', function(req, res){
       console.log('There was an error connecting to the database');
       res.sendStatus(500);
     } else {
-      client.query('SELECT * FROM employee_information;', function(err, result){
+      client.query('SELECT * FROM employee_information  ORDER BY active desc;', function(err, result){
+        done();
+        if(err){
+          console.log('Error making the database query');
+          res.sendStatus(500);
+        } else {
+          res.status(200).send(result.rows);
+        }//ends else
+      });//end of query function
+    }//ends else
+  });//ends pool.connect
+}); //ends expenditures router
+
+router.get('/activeEmployees', function(req, res){
+  pool.connect(function(err, client, done){
+    if(err){
+      console.log('There was an error connecting to the database');
+      res.sendStatus(500);
+    } else {
+      client.query('SELECT * FROM employee_information WHERE active;', function(err, result){
         done();
         if(err){
           console.log('Error making the database query');
