@@ -1,3 +1,38 @@
 <h1>Montly Salary Budget</h1>
 
 <p>{{bc.message}}</p>
+
+<p>{{bc.budget}}</p>
+<h3>Current Monthly Budget: {{}}</h3>
+
+<div id = "addBudget">
+  <form id ="budgetForm" class="col-md-12">
+    <h3>New Monthly Budget</h3>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>Month</label><br>
+      <input placeholder="Job Title">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>Budget</label><br>
+      <input ng-model="bc.newBudget.monthly_budget" placeholder="Annual Salary">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <button id="formButton" ng-click="bc.addBudget()">Add New Budget</button>
+    </div>
+  </form>
+</div>
+
+<!-- <div id = "budgetTable">
+  <h3>Past Budgets</h3>
+  <table align = "center">
+    <tr>
+      <th>Month</th>
+      <th>Budget</th>
+    </tr>
+    <tr ng-repeat="budget in ec.budget.list">
+      <td>Month</td>
+      <td>{{budget.monthly_budget}}</td>
+    </tr>
+  </table> -->
+
+</div>

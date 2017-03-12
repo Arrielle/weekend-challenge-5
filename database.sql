@@ -8,6 +8,11 @@ CREATE TABLE employee_information (
     active BOOLEAN SET DEFAULT true
 );
 
+CREATE TABLE employee_budget (
+    id SERIAL PRIMARY KEY,
+    monthly_budget integer
+);
+
 -- dummyData
 
 INSERT INTO employee_information (first_name, last_name, id_number, job_title, annual_salary)
@@ -15,3 +20,6 @@ VALUES ('Arrielle', 'Kooiman', 00123, 'Boss', 12000, true),
 ('Alex', 'Seabold', 00124, 'Sub-boss', 1200, true);
 ('Manny', 'Makier', 00134, 'Not a boss', 1200, false);
 ('Joe', 'Phish', 02399, 'Random Employee', 120, false);
+
+INSERT INTO employee_budget (monthly_budget)
+VALUES (300000);

@@ -1,33 +1,132 @@
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    margin: 0 0 100px; /* bottom = footer height */
-    padding: 25px;
+  margin: 0 0 100px; /* bottom = footer height */
+  padding: 25px;
 }
 
 footer {
-    background-color: orange;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow:hidden;
-  }
+  background-color: #4E4D50;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow:hidden;
+  height: 80px;
+}
 
 header {
-      background-color: lightgrey;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      overflow:hidden;
-    }
+  background-color: #FF8800;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow:hidden;
+}
 
+  h1 {
+    padding: 20px;
+    text-align: left;
+  }
 
+  /*EMPLOYEE INFORMATION*/
+
+  lable + input {
+    width: 30%;
+    margin: 0 30% 0 4%;
+  }
+
+  input {
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding: 15px 10px 10px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 100%;
+  }
+
+  form section div {
+    float: left;
+    padding: 10px;
+  }
+
+  form section div.full {
+    clear: both;
+  }
+
+  form section div label {
+    display: block;
+  }
+
+  /*EMPLOYEE LIST (TABLE)*/
+
+  table {
+    width: 100%;
+    background-color: #f1f1f1;
+    border-collapse: collapse;
+  }
+
+  th {
+    height: 50px;
+  }
+
+  tr:hover {
+    background-color: #FF8800 !important;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ffffff;
+  }
 
   .inactive {
-    background-color: lightgrey;
+    background-color: lightgrey !important;
+  }
+  /*tr:first-child:hover {
+    background-color: #ff8800;
+  }*/
+
+
+  tr:first-child {
+    background-color: #FF8800;
+    color: white;
+  }
+
+
+  /*BUTTONS */
+
+  #formButton {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    background-color: #FF8800;
+    padding: 15px 85px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #FF8800;
+    transition: .5s;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  #formButton:hover, .button:hover {
+    background: #BD6500;
+  }
+
+
+  button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #4E4D50;
+    padding: 10px 50px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #4E4D50;
+    display: inline-block;
+    cursor: pointer;
+    width: 80%;
+    color: #fff;
   }

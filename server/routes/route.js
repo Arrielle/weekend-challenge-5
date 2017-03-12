@@ -11,13 +11,14 @@ var config = {
 
 var pool = new pg.Pool(config);
 
+// GETS ALL EMPLOYEE INFO FROM THE DATABASE
 router.get('/expenditures', function(req, res){
   pool.connect(function(err, client, done){
     if(err){
       console.log('There was an error connecting to the database');
       res.sendStatus(500);
     } else {
-      client.query('SELECT * FROM employee_information  ORDER BY active desc;', function(err, result){
+      client.query('SELECT * FROM employee_information', function(err, result){
         done();
         if(err){
           console.log('Error making the database query');
@@ -30,6 +31,28 @@ router.get('/expenditures', function(req, res){
   });//ends pool.connect
 }); //ends expenditures router
 
+// GETS ALL BUDGET INFO FROM THE DATABASE
+router.get('/budget', function(req, res){
+  pool.connect(function(err, client, done){
+    if(err){
+      console.log('There was an error connecting to the database');
+      res.sendStatus(500);
+    } else {
+      client.query('SELECT * FROM employee_budget', function(err, result){
+        done();
+        if(err){
+          console.log('Error making the database query');
+          res.sendStatus(500);
+        } else {
+          res.status(200).send(result.rows);
+        }//ends else
+      });//end of query function
+    }//ends else
+  });//ends pool.connect
+}); //ends expenditures router
+
+
+//GETS ALL ACTIVE EMPLOYEES FROM THE DATABASE
 router.get('/activeEmployees', function(req, res){
   pool.connect(function(err, client, done){
     if(err){
@@ -49,6 +72,7 @@ router.get('/activeEmployees', function(req, res){
   });//ends pool.connect
 }); //ends expenditures router
 
+//ADDS A NEW EMPLOYEE TO THE DATABASE AND POSTS THEM ON THE DOM
 router.post('/newEmployee', function(req,res){
   console.log('hit post route');
   var employeeObject = req.body;
@@ -69,6 +93,31 @@ router.post('/newEmployee', function(req,res){
   });//end pool.connect
 });//ends newEmployee post
 
+//ADDS A NEW EMPLOYEE TO THE DATABASE AND POSTS THEM ON THE DOM
+router.post('/newBudget', function(req,res){
+  console.log('hit post route');
+  var budgetObject = req.body;
+  console.log(budgetObject)
+  pool.connect(function(err, client, done){
+    if(err){
+      console.log('error connecting to database')
+      res.sendStatus(500);
+    } else {
+      client.query('INSERT INTO employee_budget (monthly_budget)VALUES ($1);',
+    [budgetObject.monthly_budget], function(err, result){
+      done();
+      if (err){
+        res.sendStatus(500);
+      } else {
+        console.log('error posting to database')
+        res.status(200).send(result.rows);
+      }//ends else
+    });//ends client query
+  }//ends else
+  });//end pool.connect
+});//ends newEmployee post
+
+//CHANGES AN EMPLOYEES STATUS FROM ACTIVE TO INACTIVE (TRUE TO FALSE)
 router.put('/inactive/:id', function(req, res){
   var employeeStatusToChangeID = req.params.id;
   console.log(req.params.id);
@@ -91,6 +140,7 @@ router.put('/inactive/:id', function(req, res){
   });
 });
 
+//CHANGES AN EMPLOYEES STATUS FROM INACTIVE TO ACTIVE (FALSE TO TRUE)
 router.put('/active/:id', function(req, res){
   var employeeStatusToChangeID = req.params.id;
   console.log(req.params.id);

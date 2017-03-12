@@ -1,18 +1,45 @@
 <h1>Monthly Expenditures View</h1>
-<p> {{ec.message}} </p>
+
+<div id = 'monthlyExpenditure' class="col-md-12">
+  <div class="col-md-6">
+    <h3> Monthly Budget: {{ec.calculateExpenditure()}}</h3>
+  </div>
+  <div class="col-md-6">
+    <h3 > Total Monthly Expenditure: </h3>
+  </div>
+</div>
+
 <div id = "addEmployee">
-  <form>
-    <input ng-model="ec.newEmployee.first_name" placeholder="First Name">
-    <input ng-model="ec.newEmployee.last_name" placeholder = "Last Name">
-    <input ng-model="ec.newEmployee.id_number" placeholder="ID Number">
-    <input ng-model="ec.newEmployee.job_title" placeholder="Job Title">
-    <input ng-model="ec.newEmployee.annual_salary" placeholder="Annual Salary">
-    <button ng-click="ec.addEmployee()">Add Employee</button>
+  <form id ="newEmployeeForm" class="col-md-12">
+    <h3>New Employee</h3>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>First Name</label><br>
+      <input ng-model="ec.newEmployee.first_name" placeholder="First Name">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>Last name</label><br>
+      <input ng-model="ec.newEmployee.last_name" placeholder = "Last Name">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>ID Number</label><br>
+      <input ng-model="ec.newEmployee.id_number" placeholder="ID Number">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>Job Title</label><br>
+      <input ng-model="ec.newEmployee.job_title" placeholder="Job Title">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <label>Annual Salary</label><br>
+      <input ng-model="ec.newEmployee.annual_salary" placeholder="Annual Salary">
+    </div>
+    <div class="form-group col-xs-6 col-md-4">
+      <button id="formButton" ng-click="ec.addEmployee()">Add Employee</button>
+    </div>
   </form>
 </div>
 
 <div id = "activeExpenditures">
-  <h2>Employee Expenditures</h2>
+  <h3>Employee Expenditures</h3>
   <table align = "center">
     <tr>
       <th>First Name</th>
@@ -39,7 +66,5 @@
       <td><button ng-click="ec.statusChangeActive(employee.id)" type="button" name="button">Set Active</button></td>
     </tr>
   </table>
-  <div id = monthlyExpenditure>
-    <h3> Total Monthly Expenditure: {{ec.calculateExpenditure()}}</h3>
-  </div>
+
 </div>

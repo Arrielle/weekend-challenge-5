@@ -1,12 +1,16 @@
 myApp.factory('DataFactory', ['$http', function($http) {
   var self = this;
   self.newEmployee = {};
+  self.newBudget = {};
   var factoryExpenditures = { list: [] };
+  var monthlyBudget = { list: [] };
   var activeEmployees = { list: [] };
   getExpenditures();
   getActive();
+  getBudget();
 
-  console.log('in factory', factoryExpenditures);
+
+//WORKING WITH THE EMPLOYEE DATABASE
 
   function getExpenditures(){
     $http({
@@ -42,9 +46,9 @@ myApp.factory('DataFactory', ['$http', function($http) {
       method: 'PUT',
       url: '/inactive/' + employeeID
     }).then(function(response){
-      getActive();
       getExpenditures();
-    })
+      getActive();
+        })
   }
 
   function changeStatusActive(employeeID){
@@ -52,9 +56,30 @@ myApp.factory('DataFactory', ['$http', function($http) {
       method: 'PUT',
       url: '/active/' + employeeID
     }).then(function(response){
-      getActive();
       getExpenditures();
-    })
+      getActive();
+        })
+  }
+
+
+  //WORKING WITH THE BUDGET DATABASE
+  function getBudget(){
+    $http({
+      method: 'GET',
+      url: '/budget'
+    }).then(function(response){
+      monthlyBudget.list = response.data;
+    });
+  }
+
+  function addBudget(newBudget){
+    $http({
+      method: 'POST',
+      url: '/newBudget',
+      data: newBudget
+    }).then(function(response){
+      getBudget();
+    });
   }
 
   return {
@@ -62,7 +87,9 @@ myApp.factory('DataFactory', ['$http', function($http) {
     addEmployee: addEmployee,
     activeEmployees: activeEmployees,
     changeStatusInactive: changeStatusInactive,
-    changeStatusActive: changeStatusActive
+    changeStatusActive: changeStatusActive,
+    monthlyBudget: monthlyBudget,
+    addBudget: addBudget
   }
 
 }]);
