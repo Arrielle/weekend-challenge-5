@@ -48,7 +48,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
     }).then(function(response){
       getExpenditures();
       getActive();
-        })
+    });
   }
 
   function changeStatusActive(employeeID){
@@ -57,8 +57,8 @@ myApp.factory('DataFactory', ['$http', function($http) {
       url: '/active/' + employeeID
     }).then(function(response){
       getExpenditures();
-      getActive();
-        })
+      // getActive();
+    });
   }
 
 

@@ -7,10 +7,6 @@ myApp.controller('ExpendituresController', ['DataFactory', function(DataFactory)
  self.montlyExpenditure = 0;
  self.newEmployee = {};
 
-self.calculateBudget = function(){
-  // self.budget = DataFactory.monthlyBudget.list;
-}
-
 //Adds a new employee to the database and immediately shows on the DOM
 self.addEmployee = function(){
   DataFactory.addEmployee(self.newEmployee);
@@ -40,14 +36,17 @@ self.calculateExpenditure = function(){
 //BUDGET STUFF
 self.newBudget = {};
 self.budget = DataFactory.monthlyBudget;
+self.errorBroke = false;
 
-self.broke = function(){
-  if (ec.budget.list[0].monthly_budget < self.calculateExpenditure()){
-    console.log('yall out of money');
+self.checkBudget = function(){
+  if(self.budget.list[0].monthly_budget < self.calculateExpenditure()){
+    self.errorBroke = true;
+    console.log('we are good');
   } else {
-    console.log('yall good');
+    self.errorBroke = false;
+    console.log('we are broke');
   }
-
-}
+  return self.errorBroke;
+  }
 
 }]);
