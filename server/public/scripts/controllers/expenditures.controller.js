@@ -37,13 +37,13 @@ self.calculateExpenditure = function(){
 self.newBudget = {};
 self.budget = DataFactory.monthlyBudget;
 
-// self.checkBudget = function(){
-//   if(self.budget.list[0].monthly_budget < self.calculateExpenditure()){
-//     self.errorBroke = true;
-//   } else {
-//     self.errorBroke = false;
-//   }
-//   return self.errorBroke;
-//   }
+self.checkBudget = function(){
+  if(self.budget.list[0].monthly_budget < self.calculateExpenditure()){
+    self.errorBroke = true;
+  } else {
+    self.errorBroke = false;
+  }
+  return self.errorBroke;
+  }
 
 }]);

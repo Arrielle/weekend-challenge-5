@@ -133,7 +133,7 @@ router.put('/inactive/:id', function(req, res){
           console.log('error updating the database');
           res.sendStatus(500);
         } else {
-          res.status(200);
+          res.status(200).send(result.rows);;
         }
       });
     }
@@ -156,7 +156,7 @@ router.put('/active/:id', function(req, res){
           console.log('error updating the database');
           res.sendStatus(500);
         } else {
-          res.status(200);
+          res.status(200).send(result.rows);;
         }
       });
     }
