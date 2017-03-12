@@ -13,8 +13,8 @@ Convert your previous weekend 1 challenge application (original instructions bel
 No more deleting! Create an interface on the page that would allow you to toggle employees from active to inactive and back. Your salary total should only tally active employees and change as employees are changed. Be sure to style the inactive employees differently than active ones.
 
 - [x] Make button change active status from true to false, and visa versa.
-- [ ] Ensure DOM is updated immediately after change.
-- [ ] Don't allow a user to enter an empty form. Error if form is not filled out.
+- [x] Ensure DOM is updated immediately after change.
+- [x] Don't allow a user to enter an empty form. Error if form is not filled out.
 
 ###Pro Mode
 - [x] Bring in ngRoute and create a second view and controller as well as a nav bar.

@@ -78,9 +78,9 @@ header {
     background-color: #FF8800 !important;
   }
 
-  tr:nth-child(even) {
+  /*tr:nth-child(even) {
     background-color: #ffffff;
-  }
+  }*/
 
   .inactive {
     background-color: lightgrey !important;
