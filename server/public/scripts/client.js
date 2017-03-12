@@ -3,11 +3,6 @@ var myApp = angular.module('myApp', ['ngRoute']);
 myApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
-        .when('/home', {
-            templateUrl: '/views/templates/home.html',
-            controller: 'HomeController',
-            controllerAs: 'hc'
-        })
         .when('/expenditures', {
           templateUrl: '/views/templates/expenditures.html',
           controller: 'ExpendituresController',
@@ -19,6 +14,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controllerAs: 'bc'
         })
         .otherwise({
-            redirectTo: 'home'
+            redirectTo: 'expenditures'
         });
 }]);

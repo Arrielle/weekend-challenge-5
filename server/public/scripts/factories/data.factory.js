@@ -57,7 +57,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
       url: '/active/' + employeeID
     }).then(function(response){
       getExpenditures();
-      // getActive();
+      getActive();
     });
   }
 

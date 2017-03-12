@@ -36,17 +36,14 @@ self.calculateExpenditure = function(){
 //BUDGET STUFF
 self.newBudget = {};
 self.budget = DataFactory.monthlyBudget;
-self.errorBroke = false;
 
-self.checkBudget = function(){
-  if(self.budget.list[0].monthly_budget < self.calculateExpenditure()){
-    self.errorBroke = true;
-    console.log('we are good');
-  } else {
-    self.errorBroke = false;
-    console.log('we are broke');
-  }
-  return self.errorBroke;
-  }
+// self.checkBudget = function(){
+//   if(self.budget.list[0].monthly_budget < self.calculateExpenditure()){
+//     self.errorBroke = true;
+//   } else {
+//     self.errorBroke = false;
+//   }
+//   return self.errorBroke;
+//   }
 
 }]);
