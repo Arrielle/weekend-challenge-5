@@ -14,14 +14,15 @@ No more deleting! Create an interface on the page that would allow you to toggle
 
 - [x] Make button change active status from true to false, and visa versa.
 - [ ] Ensure DOM is updated immediately after change.
+- [ ] Don't allow a user to enter an empty form. Error if form is not filled out.
 
 ###Pro Mode
 - [x] Bring in ngRoute and create a second view and controller as well as a nav bar.
 - [x] The second view will handle setting a monthly salary budget (in the database!)
-- [ ] and display budget limit history.
+- [x] and display budget limit history.
 - [ ] The first view then needs to be updated to tell the user if the active employees are over the latest budget limit set.
 - [x] There are several ways to solve this, but for Pro mode, move all of your AJAX requests into a factory so that $http is not a dependency in any of your controllers.
-- [ ] The angular factory should share the budget number between controllers.
+- [x] The angular factory should share the budget number between controllers.
 
 ##Original Challenge Instructions
 

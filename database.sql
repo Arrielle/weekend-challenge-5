@@ -10,6 +10,7 @@ CREATE TABLE employee_information (
 
 CREATE TABLE employee_budget (
     id SERIAL PRIMARY KEY,
+    month varchar(15),
     monthly_budget integer
 );
 
@@ -23,3 +24,6 @@ VALUES ('Arrielle', 'Kooiman', 00123, 'Boss', 12000, true),
 
 INSERT INTO employee_budget (monthly_budget)
 VALUES (300000);
+
+INSERT INTO employee_budget (monthly_budget, month)
+VALUES (300000, 'January');

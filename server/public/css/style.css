@@ -102,8 +102,7 @@ header {
     margin-top: 25px;
     margin-bottom: 5px;
     background-color: #FF8800;
-    padding: 15px 85px;
-    font-size: 1em;
+        font-size: 1em;
     border-radius: 5px;
     border: 1px solid #FF8800;
     transition: .5s;

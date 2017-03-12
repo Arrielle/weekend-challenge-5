@@ -4,7 +4,6 @@ myApp.controller('ExpendituresController', ['DataFactory', function(DataFactory)
  self.message = 'Welcome to the Expenditures View';
  self.expendituresList = DataFactory.factoryExpenditures;
  self.activeEmployeeList = DataFactory.activeEmployees;
- self.budget = DataFactory.monthlyBudget;
  self.montlyExpenditure = 0;
  self.newEmployee = {};
 
@@ -35,6 +34,20 @@ self.calculateExpenditure = function(){
   }
   self.monthlyExpenditure = totalSalary/12;
   return self.monthlyExpenditure
+}
+
+
+//BUDGET STUFF
+self.newBudget = {};
+self.budget = DataFactory.monthlyBudget;
+
+self.broke = function(){
+  if (ec.budget.list[0].monthly_budget < self.calculateExpenditure()){
+    console.log('yall out of money');
+  } else {
+    console.log('yall good');
+  }
+
 }
 
 }]);

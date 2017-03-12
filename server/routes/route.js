@@ -38,7 +38,7 @@ router.get('/budget', function(req, res){
       console.log('There was an error connecting to the database');
       res.sendStatus(500);
     } else {
-      client.query('SELECT * FROM employee_budget', function(err, result){
+      client.query('SELECT * FROM employee_budget ORDER BY id desc', function(err, result){
         done();
         if(err){
           console.log('Error making the database query');
@@ -103,8 +103,8 @@ router.post('/newBudget', function(req,res){
       console.log('error connecting to database')
       res.sendStatus(500);
     } else {
-      client.query('INSERT INTO employee_budget (monthly_budget)VALUES ($1);',
-    [budgetObject.monthly_budget], function(err, result){
+      client.query('INSERT INTO employee_budget (monthly_budget, month)VALUES ($1, $2);',
+    [budgetObject.monthly_budget, budgetObject.month], function(err, result){
       done();
       if (err){
         res.sendStatus(500);
