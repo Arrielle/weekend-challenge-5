@@ -5,11 +5,12 @@ myApp.controller('ExpendituresController', ['DataFactory', function(DataFactory)
  self.expendituresList = DataFactory.factoryExpenditures;
  self.activeEmployeeList = DataFactory.activeEmployees;
  self.montlyExpenditure = 0;
- self.newEmployee = {};
+
 
 //Adds a new employee to the database and immediately shows on the DOM
 self.addEmployee = function(){
   DataFactory.addEmployee(self.newEmployee);
+  self.newEmployee = {};
 }
 
 //BUTTON FUNCTIONALITY / ACTIVITY STATUS
